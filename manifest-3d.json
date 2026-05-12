@@ -1,0 +1,15 @@
+{
+  "name": "GeoVolum 3D - 3r ESO",
+  "short_name": "GeoVolum",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e63946",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2312/2312674.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

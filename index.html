@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVolum 3r ESO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest-3d.json">
+    <meta name="theme-color" content="#e63946">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header style="background: #e63946;">
+        <h1>🧊 GeoVolum 3D</h1>
+        <p>Càlcul de Cossos Geomètrics (3r ESO)</p>
+    </header>
+
+    <main class="container">
+        <section class="selector-area">
+            <label for="body-select">Quin cos vols estudiar?</label>
+            <select id="body-select">
+                <option value="">-- Selecciona un cos --</option>
+                <option value="prisma">Prisma Recte</option>
+                <option value="piramide">Piràmide</option>
+                <option value="cilindre">Cilindre</option>
+                <option value="con">Con</option>
+                <option value="esfera">Esfera</option>
+            </select>
+        </section>
+
+        <section id="display-area" class="hidden">
+            <div class="info-card">
+                <div id="figure-visual" class="visual"></div>
+                <div class="formulas">
+                    <h3>Fórmules del PDF</h3>
+                    <p id="formula-text"></p>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <h3>Calculadora de Volum i Àrea</h3>
+                <p class="instruction">Deixa buit el valor que vulguis trobar.</p>
+                <div id="inputs-container"></div>
+                <button id="calc-btn" style="background: #e63946;">Calcula el valor</button>
+                <button id="reset-btn" class="secondary">Neteja</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="app-3d.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw-3d.js');
+        }
+    </script>
+</body>
+</html>
