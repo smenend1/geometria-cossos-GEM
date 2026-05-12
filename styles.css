@@ -1,87 +1,68 @@
 :root {
-    --primary: #e63946;    /* Vermell intens per a 3D */
-    --secondary: #f1faee;  /* Blanc trencat per a fons de targetes */
-    --accent: #1d3557;     /* Blau fosc per a contrast de text */
-    --bg: #f8f9fa;         /* Gris molt clar per al fons general */
+    --primary: #e63946;
+    --secondary: #f1faee;
+    --accent: #1d3557;
+    --bg: #f8f9fa;
     --text: #2b2d42;
-    --success: #2a9d8f;    /* Verd per als resultats */
-}
-
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background-color: var(--bg);
-    color: var(--text);
     margin: 0;
     padding: 0;
-    line-height: 1.6;
 }
 
 header {
     background: var(--primary);
     color: white;
-    width: 100%;
     text-align: center;
-    padding: 1.5rem 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-header h1 {
-    margin: 0;
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-}
-
-header p {
-    margin: 5px 0 0;
-    opacity: 0.9;
-    font-size: 0.9rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .container {
     width: 95%;
     max-width: 900px;
     margin: 20px auto;
-    padding-bottom: 40px;
 }
 
-/* Àrea de selecció */
 .selector-area {
     background: white;
     padding: 1.5rem;
     border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     margin-bottom: 20px;
 }
 
-.selector-area label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: var(--accent);
+.grid-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
 }
 
-select {
-    padding: 12px 15px;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: 2px solid #dee2e6;
-    width: 100%;
-    max-width: 400px;
-    outline: none;
-    transition: border-color 0.3s;
+.shape-card {
+    background: white;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-select:focus {
+.shape-card:hover, .shape-card.active {
     border-color: var(--primary);
+    background-color: #fff5f6;
+    transform: translateY(-3px);
 }
 
-/* Targetes d'informació i càlcul */
+.shape-card svg { width: 50px; height: 50px; margin-bottom: 8px; }
+.shape-card span { font-weight: 600; font-size: 0.85rem; }
+
 .info-card, .calculator-card {
     background: white;
     padding: 1.5rem;
@@ -91,123 +72,47 @@ select:focus {
 }
 
 .visual {
-    width: 100%;
-    min-height: 180px;
+    background: var(--secondary);
+    border-radius: 12px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--secondary);
-    border-radius: 12px;
     margin-bottom: 15px;
-    border: 1px solid rgba(230, 57, 70, 0.1);
-}
-
-.formulas h3 {
-    margin-top: 0;
-    color: var(--primary);
-    border-bottom: 2px solid var(--secondary);
-    padding-bottom: 8px;
 }
 
 #formula-text {
-    font-family: 'Courier New', Courier, monospace;
-    background: #f1f1f1;
+    font-family: monospace;
+    background: #eee;
     padding: 10px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    color: var(--accent);
-}
-
-/* Estils dels inputs */
-.instruction {
-    font-size: 0.9rem;
-    color: #6c757d;
-    margin-bottom: 1.5rem;
+    border-radius: 5px;
 }
 
 #inputs-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     margin-bottom: 20px;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
+.input-group { display: flex; flex-direction: column; }
+input { padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
 
-.input-group label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: var(--accent);
-}
-
-input {
-    padding: 12px;
-    font-size: 1.1rem;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    transition: all 0.2s;
-    background: #ffffff;
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
-}
-
-/* Botons */
 button {
-    border: none;
-    padding: 16px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
-    transition: transform 0.1s, opacity 0.2s;
+    background: var(--primary);
     color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
-button:active {
-    transform: scale(0.98);
-}
+button.secondary { background: #6c757d; }
+.hidden { display: none; }
 
-button.secondary {
-    background: #6c757d;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-.hidden {
-    display: none;
-}
-
-/* Adaptació per a Pantalles Grans (Tablets/Windows) */
 @media (min-width: 768px) {
-    .info-card {
-        display: grid;
-        grid-template-columns: 250px 1fr;
-        gap: 25px;
-        align-items: center;
-    }
-    
-    .visual {
-        margin-bottom: 0;
-    }
-
-    #inputs-container {
-        grid-template-columns: 1fr 1fr; /* Dos camps per fila */
-    }
-
-    button {
-        width: calc(50% - 5px);
-        display: inline-block;
-    }
+    .info-card { display: grid; grid-template-columns: 200px 1fr; gap: 20px; }
 }
